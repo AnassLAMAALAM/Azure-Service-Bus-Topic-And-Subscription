@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Register a specific instance of ITopicClient
-builder.Services.AddSingleton<ITopicClient>(provider =>
+builder.Services.AddTransient<ITopicClient>(provider =>
 {
     var config = provider.GetRequiredService<IConfiguration>();
     var connectionString = config.GetConnectionString("AzureServiceBus");
